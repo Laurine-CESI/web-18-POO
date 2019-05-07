@@ -1,7 +1,12 @@
 <?php
 
+date_default_timezone_set('Europe/Paris');
+require_once './classes/Log.php';
 require_once './classes/Character.php';
 require_once './classes/Magician.php';
+
+// le double :: signifie : Paamayim Nekudotayim : double deux points en Israëlien
+Log::logWrite("Mets des commentaires");
 
 $michel = new Character(10, 27, 528, 3);
 $monique = new Character(13, 18, 250, 0.6);
