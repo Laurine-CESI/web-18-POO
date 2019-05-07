@@ -14,5 +14,15 @@ class Log
         $data = date('H:i:s') . " " . $data;
         // Création de "ressource" après ouverture du fichier horodaté
         $handle = fopen($path, "a");
+        // Si la ressource est disponible : 
+        if(flock($handle, LOCK_EX)) {
+            // On écrit dans le fichier ($data + retour chariot)
+            fwrite($handle, $data . PHP_EOL);
+            // On débloque le fichier
+            flock($handle, LOCK_UN);
+        }
+        // On ferme le fichier précédemment ouvert
+        fclose($handle);
+
     }
 }
